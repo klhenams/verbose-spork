@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% load i18n crispy_forms_tags %}
+
+{% block title %}
+  {% if form.instance.pk %}
+    {% trans "Edit Product" %}
+  {% else %}
+    {% trans "Add Product" %}
+  {% endif %}
+{% endblock %}
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h2>
+              {% if form.instance.pk %}
+                {% trans "Edit Product" %}: {{ form.instance.name }}
+              {% else %}
+                {% trans "Add New Product" %}
+              {% endif %}
+            </h2>
+          </div>
+          <div class="card-body">
+            <form method="post" novalidate>
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6">
+                  <h5>{% trans "Basic Information" %}</h5>
+                  {% crispy form.name %}
+                  {% crispy form.sku %}
+                  {% crispy form.category %}
+                </div>
+                <div class="col-md-6">
+                  <h5>{% trans "Pricing & Inventory" %}</h5>
+                  {% crispy form.price %}
+                  {% crispy form.cost %}
+                  {% crispy form.stock_quantity %}
+                  {% crispy form.low_stock_threshold %}
+                </div>
+              </div>
+              <div class="mb-3">
+                <h5>{% trans "Description" %}</h5>
+                {% crispy form.description %}
+              </div>
+              <div class="mb-3">
+                <h5>{% trans "Status" %}</h5>
+                {% crispy form.status %}
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                  {% if form.instance.pk %}
+                    {% trans "Update Product" %}
+                  {% else %}
+                    {% trans "Create Product" %}
+                  {% endif %}
+                </button>
+                <a href="{% url 'products:list' %}" class="btn btn-secondary">{% trans "Cancel" %}</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
