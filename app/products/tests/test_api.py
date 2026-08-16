@@ -31,7 +31,7 @@ class TestProductAPI:
 
     def test_list_products_requires_auth(self, client):
         """Test that listing products requires authentication."""
-        response = client.get("/api/products/products/")
+        response = client.get("/api/products/")
         assert response.status_code == status.HTTP_403_FORBIDDEN
 
     def test_list_products(self, authenticated_client):
@@ -40,7 +40,7 @@ class TestProductAPI:
         category = CategoryFactory()
         ProductFactory.create_batch(5, category=category)
 
-        response = client.get("/api/products/products/")
+        response = client.get("/api/products/")
         assert response.status_code == status.HTTP_200_OK
         assert "results" in response.data
         assert len(response.data["results"]) <= 5  # noqa: PLR2004
@@ -50,7 +50,7 @@ class TestProductAPI:
         client, _ = authenticated_client
         ProductFactory.create_batch(25)
 
-        response = client.get("/api/products/products/?page_size=10&page=1")
+        response = client.get("/api/products/?page_size=10&page=1")
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data["results"]) == 10  # noqa: PLR2004
         assert response.data["count"] >= 25  # noqa: PLR2004
@@ -61,7 +61,7 @@ class TestProductAPI:
         ProductFactory(name="Laptop")
         ProductFactory(name="Mouse")
 
-        response = client.get("/api/products/products/?name=Laptop")
+        response = client.get("/api/products/?name=Laptop")
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data["results"]) == 1
         assert response.data["results"][0]["name"] == "Laptop"
@@ -72,7 +72,7 @@ class TestProductAPI:
         ProductFactory(sku="SKU-001")
         ProductFactory(sku="SKU-002")
 
-        response = client.get("/api/products/products/?sku=SKU-001")
+        response = client.get("/api/products/?sku=SKU-001")
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data["results"]) == 1
         assert response.data["results"][0]["sku"] == "SKU-001"
@@ -85,7 +85,7 @@ class TestProductAPI:
         ProductFactory(category=category1)
         ProductFactory(category=category2)
 
-        response = client.get(f"/api/products/products/?category={category1.id}")
+        response = client.get(f"/api/products/?category={category1.id}")
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data["results"]) == 1
 
@@ -95,7 +95,7 @@ class TestProductAPI:
         ProductFactory(status=ProductStatus.ACTIVE)
         ProductFactory(status=ProductStatus.INACTIVE)
 
-        response = client.get(f"/api/products/products/?status={ProductStatus.ACTIVE}")
+        response = client.get(f"/api/products/?status={ProductStatus.ACTIVE}")
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data["results"]) == 1
 
@@ -105,7 +105,7 @@ class TestProductAPI:
         ProductFactory(price=Decimal("50.00"))
         ProductFactory(price=Decimal("150.00"))
 
-        response = client.get("/api/products/products/?min_price=100&max_price=200")
+        response = client.get("/api/products/?min_price=100&max_price=200")
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data["results"]) == 1
         assert response.data["results"][0]["price"] == "150.00"
@@ -116,7 +116,7 @@ class TestProductAPI:
         ProductFactory(stock_quantity=5, low_stock_threshold=10)
         ProductFactory(stock_quantity=50, low_stock_threshold=10)
 
-        response = client.get("/api/products/products/?is_low_stock=true")
+        response = client.get("/api/products/?is_low_stock=true")
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data["results"]) == 1
 
@@ -137,7 +137,7 @@ class TestProductAPI:
             "status": ProductStatus.ACTIVE,
         }
 
-        response = client.post("/api/products/products/", data, format="json")
+        response = client.post("/api/products/", data, format="json")
         assert response.status_code == status.HTTP_201_CREATED
         assert response.data["name"] == "New Product"
         assert response.data["created_by"] == user.id
@@ -147,7 +147,7 @@ class TestProductAPI:
         client, _ = authenticated_client
         product = ProductFactory()
 
-        response = client.get(f"/api/products/products/{product.id}/")
+        response = client.get(f"/api/products/{product.id}/")
         assert response.status_code == status.HTTP_200_OK
         assert response.data["id"] == product.id
         assert response.data["name"] == product.name
@@ -170,7 +170,7 @@ class TestProductAPI:
         }
 
         response = client.patch(
-            f"/api/products/products/{product.id}/",
+            f"/api/products/{product.id}/",
             data,
             format="json",
         )
@@ -184,6 +184,6 @@ class TestProductAPI:
         product = ProductFactory()
         product_id = product.id
 
-        response = client.delete(f"/api/products/products/{product_id}/")
+        response = client.delete(f"/api/products/{product_id}/")
         assert response.status_code == status.HTTP_204_NO_CONTENT
         assert not Product.objects.filter(id=product_id).exists()

@@ -328,7 +328,7 @@ CORS_URLS_REGEX = r"^/api/.*$"
 SPECTACULAR_SETTINGS = {
     "TITLE": "app API",
     "DESCRIPTION": "Documentation of API endpoints of app",
-    "VERSION": "1.0.0",
+    "VERSION": "0.2.0",
     "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],
     "SCHEMA_PATH_PREFIX": "/api/",
 }

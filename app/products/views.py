@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.db import models
+from django.db.models import F
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -76,7 +76,7 @@ class ProductListView(LoginRequiredMixin, ListView):
         low_stock = self.request.GET.get("low_stock", "").strip()
         if low_stock:
             queryset = queryset.filter(
-                stock_quantity__lt=models.F("low_stock_threshold"),
+                stock_quantity__lt=F("low_stock_threshold"),
             )
 
         # Ordering
