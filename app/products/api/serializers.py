@@ -29,11 +29,11 @@ class ProductSerializer(serializers.ModelSerializer):
     is_low_stock = serializers.SerializerMethodField()
     profit_margin = serializers.SerializerMethodField()
     created_by_name = serializers.CharField(
-        source="created_by.get_full_name",
+        source="created_by.name",
         read_only=True,
     )
     updated_by_name = serializers.CharField(
-        source="updated_by.get_full_name",
+        source="updated_by.name",
         read_only=True,
         allow_null=True,
     )
