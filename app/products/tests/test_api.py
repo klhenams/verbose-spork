@@ -6,6 +6,7 @@ import pytest
 from rest_framework import status
 from rest_framework.test import APIClient
 
+from app.products.constants import ProductStatus
 from app.products.models import Product
 from app.products.tests import CategoryFactory
 from app.products.tests import ProductFactory
@@ -91,10 +92,10 @@ class TestProductAPI:
     def test_filter_by_status(self, authenticated_client):
         """Test filtering by status."""
         client, _ = authenticated_client
-        ProductFactory(status=Product.ACTIVE)
-        ProductFactory(status=Product.INACTIVE)
+        ProductFactory(status=ProductStatus.ACTIVE)
+        ProductFactory(status=ProductStatus.INACTIVE)
 
-        response = client.get(f"/api/products/products/?status={Product.ACTIVE}")
+        response = client.get(f"/api/products/products/?status={ProductStatus.ACTIVE}")
         assert response.status_code == status.HTTP_200_OK
         assert len(response.data["results"]) == 1
 
@@ -133,7 +134,7 @@ class TestProductAPI:
             "stock_quantity": 100,
             "low_stock_threshold": 10,
             "category": category.id,
-            "status": Product.ACTIVE,
+            "status": ProductStatus.ACTIVE,
         }
 
         response = client.post("/api/products/products/", data, format="json")

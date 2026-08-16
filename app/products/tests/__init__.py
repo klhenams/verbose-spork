@@ -3,6 +3,7 @@
 import factory
 from factory.django import DjangoModelFactory
 
+from app.products.constants import ProductStatus
 from app.products.models import Category
 from app.products.models import Product
 from app.users.tests.factories import UserFactory
@@ -29,7 +30,7 @@ class ProductFactory(DjangoModelFactory):
     stock_quantity = factory.Faker("random_int", min=0, max=1000)
     low_stock_threshold = factory.Faker("random_int", min=5, max=50)
     category = factory.SubFactory(CategoryFactory)
-    status = Product.ACTIVE
+    status = ProductStatus.ACTIVE
     created_by = factory.SubFactory(UserFactory)
     updated_by = factory.SubFactory(UserFactory)
 

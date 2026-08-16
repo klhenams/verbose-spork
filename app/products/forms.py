@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
+from .constants import ProductStatus
 from .models import Category
 from .models import Product
 
@@ -118,7 +119,7 @@ class ProductFilterForm(forms.Form):
         widget=forms.Select(attrs={"class": "form-control"}),
     )
     status = forms.ChoiceField(
-        choices=[("", _("All Statuses")), *Product.STATUS_CHOICES],
+        choices=[("", _("All Statuses")), *ProductStatus.choices],
         required=False,
         widget=forms.Select(attrs={"class": "form-control"}),
     )

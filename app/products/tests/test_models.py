@@ -5,7 +5,7 @@ from decimal import Decimal
 import pytest
 from django.db import IntegrityError
 
-from app.products.models import Product
+from app.products.constants import ProductStatus
 from app.products.tests import CategoryFactory
 from app.products.tests import ProductFactory
 
@@ -69,11 +69,11 @@ class TestProduct:
 
     def test_product_status_choices(self):
         """Test product status choices."""
-        product = ProductFactory(status=Product.ACTIVE)
-        assert product.status == Product.ACTIVE
+        product = ProductFactory(status=ProductStatus.ACTIVE)
+        assert product.status == ProductStatus.ACTIVE
 
-        product.status = Product.DISCONTINUED
-        assert product.status == Product.DISCONTINUED
+        product.status = ProductStatus.DISCONTINUED
+        assert product.status == ProductStatus.DISCONTINUED
 
     def test_product_timestamps(self):
         """Test product creation and update timestamps."""

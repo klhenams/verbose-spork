@@ -13,6 +13,8 @@ from django.db.models import TextField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
+from app.products.constants import ProductStatus
+
 User = get_user_model()
 
 
@@ -35,17 +37,6 @@ class Category(Model):
 
 class Product(Model):
     """Product model with complete CRUD functionality."""
-
-    # Status choices
-    ACTIVE = "active"
-    INACTIVE = "inactive"
-    DISCONTINUED = "discontinued"
-
-    STATUS_CHOICES = [
-        (ACTIVE, _("Active")),
-        (INACTIVE, _("Inactive")),
-        (DISCONTINUED, _("Discontinued")),
-    ]
 
     # Basic info
     name = CharField(_("name"), max_length=255)
@@ -85,8 +76,8 @@ class Product(Model):
     status = CharField(
         _("status"),
         max_length=20,
-        choices=STATUS_CHOICES,
-        default=ACTIVE,
+        choices=ProductStatus.choices,
+        default=ProductStatus.ACTIVE,
     )
     created_by = ForeignKey(
         User,
