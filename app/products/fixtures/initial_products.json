@@ -1,0 +1,508 @@
+[
+  {
+    "model": "products.category",
+    "pk": 1,
+    "fields": {
+      "name": "Electronics",
+      "description": "Electronic devices including computers, accessories, and gadgets",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 2,
+    "fields": {
+      "name": "Books",
+      "description": "Physical and digital books on various topics",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 3,
+    "fields": {
+      "name": "Home & Garden",
+      "description": "Home improvement, furniture, and garden supplies",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 4,
+    "fields": {
+      "name": "Sports & Outdoors",
+      "description": "Sports equipment, outdoor gear, and fitness products",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.category",
+    "pk": 5,
+    "fields": {
+      "name": "Clothing",
+      "description": "Apparel, footwear, and accessories for all seasons",
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+      "name": "MacBook Pro 14-inch",
+      "description": "Powerful laptop with M3 Pro chip, 16GB RAM, and 512GB SSD storage. Perfect for professionals.",
+      "sku": "APPLE-MBP14-001",
+      "price": "1999.99",
+      "cost": "1200.00",
+      "stock_quantity": 15,
+      "low_stock_threshold": 5,
+      "category": 1,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T10:30:00Z",
+      "updated_at": "2024-01-15T10:30:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+      "name": "Dell XPS 13 Laptop",
+      "description": "Ultra-portable 13-inch laptop with Intel i7 processor and 16GB RAM. Excellent for travel.",
+      "sku": "DELL-XPS13-001",
+      "price": "1299.99",
+      "cost": "800.00",
+      "stock_quantity": 8,
+      "low_stock_threshold": 5,
+      "category": 1,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T10:35:00Z",
+      "updated_at": "2024-01-15T10:35:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+      "name": "Wireless Bluetooth Headphones",
+      "description": "Premium noise-cancelling Bluetooth headphones with 30-hour battery life and premium sound quality.",
+      "sku": "AUDIO-BH-001",
+      "price": "299.99",
+      "cost": "120.00",
+      "stock_quantity": 45,
+      "low_stock_threshold": 10,
+      "category": 1,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T10:40:00Z",
+      "updated_at": "2024-01-15T10:40:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+      "name": "USB-C Fast Charging Cable",
+      "description": "High-speed USB-C cable with 100W power delivery. Compatible with all USB-C devices.",
+      "sku": "CABLE-USB-C-001",
+      "price": "19.99",
+      "cost": "5.00",
+      "stock_quantity": 200,
+      "low_stock_threshold": 20,
+      "category": 1,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T10:45:00Z",
+      "updated_at": "2024-01-15T10:45:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+      "name": "4K Webcam Pro",
+      "description": "Professional 4K webcam with auto-focus, wide-angle lens, and built-in dual microphones.",
+      "sku": "WEBCAM-4K-001",
+      "price": "149.99",
+      "cost": "70.00",
+      "stock_quantity": 3,
+      "low_stock_threshold": 5,
+      "category": 1,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T10:50:00Z",
+      "updated_at": "2024-01-15T10:50:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+      "name": "Clean Code: A Handbook of Agile Software Craftsmanship",
+      "description": "Essential guide to writing clean, maintainable code by Robert C. Martin. Perfect for developers.",
+      "sku": "BOOK-CLEAN-CODE-001",
+      "price": "49.99",
+      "cost": "25.00",
+      "stock_quantity": 32,
+      "low_stock_threshold": 10,
+      "category": 2,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T11:00:00Z",
+      "updated_at": "2024-01-15T11:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 7,
+    "fields": {
+      "name": "The Pragmatic Programmer",
+      "description": "Your Journey to Mastery in Software Development. Comprehensive guide for professional programmers.",
+      "sku": "BOOK-PRAGMATIC-001",
+      "price": "54.99",
+      "cost": "28.00",
+      "stock_quantity": 25,
+      "low_stock_threshold": 10,
+      "category": 2,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T11:05:00Z",
+      "updated_at": "2024-01-15T11:05:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 8,
+    "fields": {
+      "name": "Design Patterns: Elements of Reusable Object-Oriented Software",
+      "description": "Classic reference book on design patterns. Essential for software architects.",
+      "sku": "BOOK-PATTERNS-001",
+      "price": "59.99",
+      "cost": "32.00",
+      "stock_quantity": 18,
+      "low_stock_threshold": 8,
+      "category": 2,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T11:10:00Z",
+      "updated_at": "2024-01-15T11:10:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 9,
+    "fields": {
+      "name": "Ergonomic Office Chair",
+      "description": "Premium ergonomic office chair with lumbar support, adjustable armrests, and reclining function.",
+      "sku": "FURN-CHAIR-001",
+      "price": "399.99",
+      "cost": "180.00",
+      "stock_quantity": 6,
+      "low_stock_threshold": 3,
+      "category": 3,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T11:15:00Z",
+      "updated_at": "2024-01-15T11:15:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 10,
+    "fields": {
+      "name": "Standing Desk with Electric Height Adjustment",
+      "description": "Modern electric standing desk with memory presets and anti-collision technology.",
+      "sku": "FURN-DESK-001",
+      "price": "599.99",
+      "cost": "320.00",
+      "stock_quantity": 4,
+      "low_stock_threshold": 2,
+      "category": 3,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T11:20:00Z",
+      "updated_at": "2024-01-15T11:20:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 11,
+    "fields": {
+      "name": "LED Desk Lamp with USB Charging",
+      "description": "Energy-efficient LED desk lamp with adjustable brightness, color temperature, and built-in USB port.",
+      "sku": "LIGHTING-LAMP-001",
+      "price": "79.99",
+      "cost": "35.00",
+      "stock_quantity": 50,
+      "low_stock_threshold": 15,
+      "category": 3,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T11:25:00Z",
+      "updated_at": "2024-01-15T11:25:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 12,
+    "fields": {
+      "name": "Indoor Plant Potting Set",
+      "description": "Complete potting set with premium soil, pots, and tools. Everything you need for indoor gardening.",
+      "sku": "GARDEN-POTS-001",
+      "price": "39.99",
+      "cost": "18.00",
+      "stock_quantity": 60,
+      "low_stock_threshold": 20,
+      "category": 3,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T11:30:00Z",
+      "updated_at": "2024-01-15T11:30:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 13,
+    "fields": {
+      "name": "Yoga Mat with Carrying Strap",
+      "description": "Non-slip yoga mat made from natural rubber. Includes carrying strap and alignment markers.",
+      "sku": "SPORTS-YOGA-001",
+      "price": "49.99",
+      "cost": "20.00",
+      "stock_quantity": 85,
+      "low_stock_threshold": 25,
+      "category": 4,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T11:35:00Z",
+      "updated_at": "2024-01-15T11:35:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 14,
+    "fields": {
+      "name": "Adjustable Dumbbells Set 5-25 lbs",
+      "description": "Compact adjustable dumbbells perfect for home workouts. Save space while maintaining a full weight range.",
+      "sku": "SPORTS-DUMBELLS-001",
+      "price": "299.99",
+      "cost": "140.00",
+      "stock_quantity": 12,
+      "low_stock_threshold": 5,
+      "category": 4,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T11:45:00Z",
+      "updated_at": "2024-01-15T11:45:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 15,
+    "fields": {
+      "name": "Waterproof Bluetooth Portable Speaker",
+      "description": "Portable wireless speaker with 12-hour battery, waterproof design, and 360-degree sound.",
+      "sku": "AUDIO-SPEAKER-001",
+      "price": "89.99",
+      "cost": "40.00",
+      "stock_quantity": 2,
+      "low_stock_threshold": 10,
+      "category": 4,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T11:50:00Z",
+      "updated_at": "2024-01-15T11:50:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 16,
+    "fields": {
+      "name": "Hiking Backpack 50L",
+      "description": "Durable 50-liter hiking backpack with weather protection, multiple compartments, and rain cover.",
+      "sku": "OUTDOOR-BAG-001",
+      "price": "159.99",
+      "cost": "75.00",
+      "stock_quantity": 22,
+      "low_stock_threshold": 8,
+      "category": 4,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T12:00:00Z",
+      "updated_at": "2024-01-15T12:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 17,
+    "fields": {
+      "name": "Premium Cotton T-Shirt Pack",
+      "description": "Pack of 3 premium quality cotton t-shirts in assorted colors. Comfortable and durable.",
+      "sku": "CLOTHING-TSHIRT-001",
+      "price": "49.99",
+      "cost": "18.00",
+      "stock_quantity": 150,
+      "low_stock_threshold": 30,
+      "category": 5,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T12:05:00Z",
+      "updated_at": "2024-01-15T12:05:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 18,
+    "fields": {
+      "name": "Leather Work Boots",
+      "description": "Professional leather work boots with steel toe, oil resistance, and all-day comfort.",
+      "sku": "CLOTHING-BOOTS-001",
+      "price": "129.99",
+      "cost": "60.00",
+      "stock_quantity": 38,
+      "low_stock_threshold": 10,
+      "category": 5,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T12:10:00Z",
+      "updated_at": "2024-01-15T12:10:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 19,
+    "fields": {
+      "name": "Winter Wool Sweater",
+      "description": "Warm and cozy 100% wool sweater. Perfect for cold weather. Hand-washable.",
+      "sku": "CLOTHING-SWEATER-001",
+      "price": "89.99",
+      "cost": "40.00",
+      "stock_quantity": 42,
+      "low_stock_threshold": 10,
+      "category": 5,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T12:15:00Z",
+      "updated_at": "2024-01-15T12:15:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 20,
+    "fields": {
+      "name": "Stainless Steel Water Bottle 32oz",
+      "description": "Insulated stainless steel water bottle keeps drinks cold for 24 hours or hot for 12 hours.",
+      "sku": "OUTDOOR-BOTTLE-001",
+      "price": "34.99",
+      "cost": "12.00",
+      "stock_quantity": 120,
+      "low_stock_threshold": 30,
+      "category": 4,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T12:20:00Z",
+      "updated_at": "2024-01-15T12:20:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 21,
+    "fields": {
+      "name": "Mechanical Keyboard RGB",
+      "description": "Professional mechanical gaming keyboard with RGB lighting, programmable keys, and tactile switches.",
+      "sku": "PERIPH-KEYBOARD-001",
+      "price": "179.99",
+      "cost": "80.00",
+      "stock_quantity": 28,
+      "low_stock_threshold": 8,
+      "category": 1,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T12:25:00Z",
+      "updated_at": "2024-01-15T12:25:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 22,
+    "fields": {
+      "name": "Wireless Mouse with Precision Tracking",
+      "description": "Ergonomic wireless mouse with precision optical sensor and 18-month battery life.",
+      "sku": "PERIPH-MOUSE-001",
+      "price": "49.99",
+      "cost": "18.00",
+      "stock_quantity": 95,
+      "low_stock_threshold": 25,
+      "category": 1,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T12:30:00Z",
+      "updated_at": "2024-01-15T12:30:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 23,
+    "fields": {
+      "name": "Refurbished iPad Air",
+      "description": "Lightly used iPad Air with M1 chip, 64GB storage. Backed by 1-year warranty.",
+      "sku": "APPLE-IPAD-001",
+      "price": "449.99",
+      "cost": "280.00",
+      "stock_quantity": 7,
+      "low_stock_threshold": 4,
+      "category": 1,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T12:35:00Z",
+      "updated_at": "2024-01-15T12:35:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 24,
+    "fields": {
+      "name": "Screen Protector Tempered Glass",
+      "description": "Ultra-thin tempered glass screen protector with anti-fingerprint coating. Easy installation.",
+      "sku": "PROTECT-SCREEN-001",
+      "price": "12.99",
+      "cost": "3.00",
+      "stock_quantity": 300,
+      "low_stock_threshold": 50,
+      "category": 1,
+      "status": "active",
+      "created_by": 1,
+      "updated_by": 1,
+      "created_at": "2024-01-15T12:40:00Z",
+      "updated_at": "2024-01-15T12:40:00Z"
+    }
+  }
+]

@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block title %}{{ product.name }}{% endblock %}
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h2>{{ product.name }}</h2>
+          </div>
+          <div class="card-body">
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h5>{% trans "Basic Information" %}</h5>
+                <dl class="row">
+                  <dt class="col-sm-4">{% trans "SKU" %}:</dt>
+                  <dd class="col-sm-8">
+                    <code>{{ product.sku }}</code>
+                  </dd>
+                  <dt class="col-sm-4">{% trans "Category" %}:</dt>
+                  <dd class="col-sm-8">
+                    {{ product.category.name }}
+                  </dd>
+                  <dt class="col-sm-4">{% trans "Status" %}:</dt>
+                  <dd class="col-sm-8">
+                    <span class="badge bg-info">{{ product.get_status_display }}</span>
+                  </dd>
+                </dl>
+              </div>
+              <div class="col-md-6">
+                <h5>{% trans "Pricing & Inventory" %}</h5>
+                <dl class="row">
+                  <dt class="col-sm-4">{% trans "Price" %}:</dt>
+                  <dd class="col-sm-8">
+                    ${{ product.price }}
+                  </dd>
+                  <dt class="col-sm-4">{% trans "Cost" %}:</dt>
+                  <dd class="col-sm-8">
+                    ${{ product.cost }}
+                  </dd>
+                  <dt class="col-sm-4">{% trans "Profit Margin" %}:</dt>
+                  <dd class="col-sm-8">
+                    {{ product.get_profit_margin }}%
+                  </dd>
+                  <dt class="col-sm-4">{% trans "Stock" %}:</dt>
+                  <dd class="col-sm-8">
+                    <span class="badge {% if product.is_low_stock %}bg-warning{% else %}bg-success{% endif %}">
+                      {{ product.stock_quantity }} {% trans "units" %}
+                    </span>
+                  </dd>
+                  <dt class="col-sm-4">{% trans "Low Stock Alert" %}:</dt>
+                  <dd class="col-sm-8">{{ product.low_stock_threshold }} {% trans "units" %}</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-12">
+                <h5>{% trans "Description" %}</h5>
+                <p>{{ product.description|linebreaks }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <h5>{% trans "Tracking" %}</h5>
+                <dl class="row">
+                  <dt class="col-sm-4">{% trans "Created By" %}:</dt>
+                  <dd class="col-sm-8">
+                    {{ product.created_by.name|default:product.created_by.email }}
+                  </dd>
+                  <dt class="col-sm-4">{% trans "Created At" %}:</dt>
+                  <dd class="col-sm-8">
+                    {{ product.created_at|date:"SHORT_DATETIME_FORMAT" }}
+                  </dd>
+                  {% if product.updated_by %}
+                    <dt class="col-sm-4">{% trans "Updated By" %}:</dt>
+                    <dd class="col-sm-8">
+                      {{ product.updated_by.name|default:product.updated_by.email }}
+                    </dd>
+                    <dt class="col-sm-4">{% trans "Updated At" %}:</dt>
+                    <dd class="col-sm-8">
+                      {{ product.updated_at|date:"SHORT_DATETIME_FORMAT" }}
+                    </dd>
+                  {% endif %}
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">{% trans "Actions" %}</div>
+          <div class="card-body">
+            <a href="{% url 'products:update' product.id %}"
+               class="btn btn-warning w-100 mb-2">{% trans "Edit" %}</a>
+            <a href="{% url 'products:delete' product.id %}"
+               class="btn btn-danger w-100 mb-2">{% trans "Delete" %}</a>
+            <a href="{% url 'products:list' %}" class="btn btn-secondary w-100">{% trans "Back to Products" %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

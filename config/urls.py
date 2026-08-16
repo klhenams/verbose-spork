@@ -21,6 +21,8 @@ urlpatterns = [
     # User management
     path("users/", include("app.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    # Products management
+    path("products/", include("app.products.urls", namespace="products")),
     # Your stuff: custom urls includes go here
     # ...
     # Media files
