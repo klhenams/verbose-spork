@@ -119,3 +119,67 @@ class ProductListSerializer(serializers.ModelSerializer):
     def get_is_low_stock(self, obj) -> bool:
         """Check if product is low on stock."""
         return obj.is_low_stock()
+
+
+class ProductWorkflowSerializer(serializers.ModelSerializer):
+    """Serializer for Product model with nested category."""
+
+    category_name = serializers.CharField(
+        source="category.name",
+        read_only=True,
+    )
+    is_low_stock = serializers.SerializerMethodField()
+    profit_margin = serializers.SerializerMethodField()
+    created_by_name = serializers.CharField(
+        source="created_by.name",
+        read_only=True,
+    )
+    updated_by_name = serializers.CharField(
+        source="updated_by.name",
+        read_only=True,
+        allow_null=True,
+    )
+
+    class Meta:
+        model = Product
+        fields = [
+            "id",
+            "name",
+            "description",
+            "sku",
+            "price",
+            "cost",
+            "profit_margin",
+            "stock_quantity",
+            "low_stock_threshold",
+            "is_low_stock",
+            "category",
+            "category_name",
+            "status",
+            "created_by",
+            "created_by_name",
+            "updated_by",
+            "updated_by_name",
+            "created_at",
+            "updated_at",
+        ]
+        read_only_fields = [
+            "id",
+            "status",
+            "created_by",
+            "created_by_name",
+            "updated_by",
+            "updated_by_name",
+            "created_at",
+            "updated_at",
+            "is_low_stock",
+            "profit_margin",
+        ]
+
+    def get_is_low_stock(self, obj) -> bool:
+        """Check if product is low on stock."""
+        return obj.is_low_stock()
+
+    def get_profit_margin(self, obj):
+        """Get profit margin percentage."""
+        return str(obj.get_profit_margin())
