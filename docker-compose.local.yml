@@ -1,7 +1,7 @@
 volumes:
   app_local_postgres_data: {}
   app_local_postgres_data_backups: {}
-
+  temporal_dynamicconfig: {}
 
 services:
   django:
@@ -13,6 +13,7 @@ services:
     depends_on:
       - postgres
       - mailpit
+      - temporal
     volumes:
       - /app/.venv
       - .:/app:z
@@ -21,7 +22,54 @@ services:
       - ./.envs/.local/.postgres
     ports:
       - '8000:8000'
+    environment:
+      - TEMPORAL_HOST=temporal:7233
     command: /start
+
+  temporal-worker:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: app_local_django
+    container_name: app_local_temporal_worker
+    depends_on:
+      - django
+      - temporal
+    volumes:
+      - /app/.venv
+      - .:/app:z
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    environment:
+      - TEMPORAL_HOST=temporal:7233
+      - PYTHONPATH=/app
+    command: python -m config.temporal_worker
+
+  temporal:
+    image: docker.io/temporalio/auto-setup:latest
+    container_name: app_local_temporal
+    ports:
+      - "7233:7233"
+    environment:
+      - DB=postgres12
+      - DB_PORT=5432
+      - POSTGRES_SEEDS=postgres
+    env_file:
+      - ./.envs/.local/.postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  temporal-ui:
+    image: docker.io/temporalio/ui:latest
+    container_name: app_local_temporal_ui
+    ports:
+      - "8088:8080"
+    environment:
+      - TEMPORAL_ADDRESS=temporal:7233
+    depends_on:
+      - temporal
 
   postgres:
     build:
@@ -34,6 +82,11 @@ services:
       - app_local_postgres_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 3s
+      timeout: 5s
+      retries: 10
 
   mailpit:
     image: docker.io/axllent/mailpit:latest
