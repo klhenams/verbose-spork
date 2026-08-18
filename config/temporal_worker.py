@@ -1,8 +1,13 @@
+# ruff: noqa: E402
 import asyncio
 import logging
 import os
 
 import django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
+django.setup()
+
 from temporalio.client import Client
 from temporalio.worker import Worker
 
@@ -14,9 +19,6 @@ from app.products.workflows.workflows import ProductPriceOnboardingWorkflow
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
-django.setup()
 
 
 async def main() -> None:
