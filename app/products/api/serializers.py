@@ -40,7 +40,6 @@ class BaseProductSerializer(serializers.ModelSerializer):
     )
     updated_by_name = serializers.CharField(
         source="updated_by.get_full_name",
-        default=serializers.CharField(source="updated_by.username", read_only=True),
         read_only=True,
         allow_null=True,
     )
@@ -83,13 +82,6 @@ class BaseProductSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(BaseProductSerializer):
     """Standard detail serializer handling automated user auditing on write."""
-
-    created_by = serializers.HiddenField(
-        default=serializers.CurrentUserDefault(),
-    )
-    updated_by = serializers.HiddenField(
-        default=serializers.CurrentUserDefault(),
-    )
 
     def update(self, instance, validated_data):
         """Ensure updated_by is explicitly reassigned on instance updates."""
