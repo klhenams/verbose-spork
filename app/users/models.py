@@ -36,3 +36,7 @@ class User(AbstractUser):
 
         """
         return reverse("users:detail", kwargs={"pk": self.id})
+
+    def get_full_name(self) -> str:
+        """Return the first_name plus the last_name, with a space in between."""
+        return self.name

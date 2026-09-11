@@ -8,7 +8,7 @@ app_name = "api_products"
 
 router = DefaultRouter()
 router.register(r"categories", CategoryViewSet, basename="category")
-router.register(r"xyz", ProductViewSet, basename="product")
-router.register(r"", ProductCreateViewSet, basename="workfow-product")
+router.register(r"workflows", ProductCreateViewSet, basename="workflow-product")
+router.register(r"", ProductViewSet, basename="product")
 
 urlpatterns = router.urls
